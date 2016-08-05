@@ -1,2 +1,30 @@
 
-  <%= @location.data%>
+  <!-- <%= @location%> -->
+<h1> Welcome to food finder </h1>
+
+<p id="alert">
+
+</p>
+
+<button id="button">Find me by my location</button>
+
+<h2>Find restaurants by location</h2>
+
+<%= form_tag locations_show_path do %>
+
+<p>
+ <%= label_tag :zip_code  %>
+ <%= text_field_tag :zip_code  %>
+</p>
+
+<p>
+ <%= label_tag :radius %>
+ <%= text_field_tag :radius  %>
+</p>
+
+<p>
+ <%= submit_tag 'Find Restaurants'  %>
+</p>
+
+<!-- <%= link_to 'Register'  %> -->
+<% end %>
