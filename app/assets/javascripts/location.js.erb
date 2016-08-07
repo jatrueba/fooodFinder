@@ -1,0 +1,41 @@
+// Order of operations:
+// 1. Run document.ready
+// 2. Set #button to listen for user's click.
+// 3. When the user clicks #button, call the location function
+// 4.
+
+//(1)
+$(document).ready(function(){
+
+  //create a named function called 'location', which is the result of
+  //calling the getLocation funtion.
+  var location = function getLocation() {
+      // console.log("hello from getLocation")
+      //if geolocation is available in this browser
+      if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              // position.coords.latitude, position.coords.longitude;
+              var latlon = position.coords.latitude + "," + position.coords.longitude;
+              // var response = $.get("https:/maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ latlon +"&radius=100&type=restaurants&key=AIzaSyAJXiGppzM31B83N26w46jvTgjQ8wYCdwQ");
+              console.log(latlon);
+              // // return response;
+              // var http = new XMLHttpRequest();
+              // var params = JSON.stringify(response);
+              // http.open("POST", "/show");
+              // http.setRequestHeader("Content-type", "application/json");
+            });//end getCurrentPosition and Goodl
+///////////////////////////////////////////////////////////
+      } else {
+          x.innerHTML = "Geolocation is not supported by this browser. Please enter your search below!";
+      }//end if else
+  }; //end location function
+
+  var x = document.getElementById("alert");
+
+  //(2)
+  $('#button').click(function(){
+    // console.log("hello");
+    location();
+  });
+
+});//end of document ready

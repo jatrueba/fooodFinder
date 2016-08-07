@@ -1,6 +1,25 @@
+<h1>Restaurants Near You:</h1>
 
-<!-- <%= @location %> -->
-<br>
-<%= @location[0].longitude %>
+<% loc = @locations.sample %>
+<div class="restaurant">
+  <h4>
+      <strong>Name:</strong>
+      <%= loc.name %>
+  </h4>
 
- <%= @location[0].latitude %>
+  <p>
+      <strong>Address:</strong>
+      <%= loc.address %>
+  </p>
+
+  <p>
+      <strong>Price Range:</strong>
+      <%= loc.price_range %>
+  </p>
+
+  <p>
+      <strong>Rating:</strong>
+      <%= loc.rating %>
+  </p>
+
+</div>
