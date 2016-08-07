@@ -1,30 +1,38 @@
 $(document).ready(function(){
-  var location = function getLocation() {
-      // console.log("hello from getLocation")
+ function getLocation() {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition());
+          navigator.geolocation.getCurrentPosition(showPosition)
+          console.log("what");
       } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
+          location.innerHTML = "Geolocation is not supported by this browser.";
       }
 
-  }
+  };
   function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
-    var img_url = ("GET", "  https:/maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ latlon+"&radius=500&types=food&name=cruise&key=AIzaSyAuw4no8ETufFiyu3FrBgOf4_rtZODlIoU");
-    console.log(img_url);
-    return img_url
+    var api = $.ajax("  https:/maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ latlon+"&type=restaurant&radius=1000&key=AIzaSyAuw4no8ETufFiyu3FrBgOf4_rtZODlIoU").done(function(){
+      console.log("working");
+      console.log(api);
+      
+      // console.dir(api.responseJSON["results"][0]["name"]);
+        var results = api.responseJSON.results[1]
+      // $.each(results, function(name, vicinity){
+          console.log(results.name);
+          console.log(results.vicinity);
+      // });
 
-    //building the call to google API to get the current locations
 
 
+      })
+      //  response = api.responseJSON["res"];
+      //   console.log(response);
 
-
-  };
+    };
 
   var x = document.getElementById("alert");
   $('#button').click(function(){
-    // console.log("hello");
-    location();
+     getLocation();
+      console.log("hello");
   });
 
 });
