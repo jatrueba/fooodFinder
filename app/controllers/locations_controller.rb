@@ -6,10 +6,7 @@ class LocationsController < ApplicationController
   after_action :clear_location, only: :index
 
   def index
-
-
   # https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyAuw4no8ETufFiyu3FrBgOf4_rtZODlIoU
-
   end
 
   #1. The zip code or location given by the user in index.html.erb
@@ -18,10 +15,8 @@ class LocationsController < ApplicationController
   #   params hash containting the user input
 
   def show
-
     location = params[:search_location] || session[:location]
     @locations = Location.get_search_results(location)
-
   end
 
   # def new
