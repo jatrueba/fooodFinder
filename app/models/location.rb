@@ -10,6 +10,7 @@ class Location < ApplicationRecord
   #return the @locations array to the location#show action.
   def self.load_response(response)
     #p response
+
     @locations = []
     response.each do |loc|
       @location = self.new
