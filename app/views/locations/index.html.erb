@@ -2,26 +2,22 @@
   <!-- <%= @location%> -->
 <h1> Welcome to Food Finder </h1>
 
-<h2>Find by my location</h2>
+<h2>Find my location</h2>
 
+<button id="button-js">Find me</button>
 
-</p>
-
-
-<button id="button">Find me by my location</button>
-
-<div id="restaurants">
-  <img class="restaurant" />
-</div>
-
-
-<h2>Find restaurants by location</h2>
-
-<h2>I'll enter my location</h2>
+<h2>Enter my location</h2>
 
 <%= form_tag ('/locations/show') do  %>
 <p>
- <%= label_tag :search  %>
+   <%= hidden_field_tag :lat, nil, id: "lat" %>
+</p>
+
+<p>
+   <%= hidden_field_tag :long, nil, id: "long" %>
+</p>
+
+<p>
  <%= text_field_tag :search_location  %>
 </p>
 

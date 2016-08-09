@@ -1,12 +1,8 @@
-require 'httparty'
-require 'json'
-#require 'google_places-0.21.0'
 class LocationsController < ApplicationController
   before_action :save_location, only: :show
   after_action :clear_location, only: :index
 
   def index
-  # https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyAuw4no8ETufFiyu3FrBgOf4_rtZODlIoU
   end
 
   #1. The zip code or location given by the user in index.html.erb
@@ -16,7 +12,10 @@ class LocationsController < ApplicationController
 
   def show
     location = params[:search_location] || session[:location]
-    @locations = Location.get_search_results(location)
+    coordinates = {lat: params[:lat], long: params[:long]}
+    @locations = Location.get_search_results(location, coordinates)
+    # p params[:lat]
+    # p params[:long]
   end
 
   # def new
