@@ -43,7 +43,7 @@ class Location < ApplicationRecord
 
   def self.get_search_results(location, coordinates)
     puts "Coordinates #{coordinates}"
-    if location == nil
+    if coordinates
       self.call_google_places_api(coordinates)
     else
       # this is working

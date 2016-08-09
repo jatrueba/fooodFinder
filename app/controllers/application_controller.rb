@@ -19,11 +19,11 @@ class ApplicationController < ActionController::Base
   #
   #
   #
-  # def save_coordinates
-  #   if session[:lat_lon] == nil
-  #     session[:lat_lon] = params[:lat] + "," + params[:long]
-  #   else
-  #     session[:lat_lon]
-  #   end
-  # end
+  def save_coordinates
+    if session[:lat_lon] == nil
+      session[:lat_lon] = params[:lat] + "," + params[:long]
+    else
+      session[:lat_lon]
+    end
+  end
 end
