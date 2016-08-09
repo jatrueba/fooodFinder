@@ -34,7 +34,7 @@ class Location < ApplicationRecord
   #Pass the response to load_response, which will wrap the response in an @location instance.
   def self.call_google_places_api(lat, lon)
     @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
-    #{lat},#{lon}&type=restaurant&radius=1000&key=#{ENV["GOOGLE_PLACES_API"]}").parsed_response["results"]
+    #{lat},#{lon}&type=restaurant&radius=1000&key=#{ENV["GOOGLE_PLACES_API"]}", :verify => false ).parsed_response["results"]
     load_response(@response)
   end
 
