@@ -2,18 +2,20 @@ var latlon;
 $(document).ready(function() {
     function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position);
+            navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             location.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-
+    // $('#id_input')attr('disabled','true').text('getting location');
     function showPosition(position) {
         latlon = position.coords;
         if (latlon !==null) {
           $('#lat').val(latlon.latitude);
           $('#long').val(latlon.longitude);
           alert("Location Found");
+          // jquery $(#id_input).val('Create Message')removeAttr()
+          //form_id.serialize
         } else {
           alert("Location not found. Please enter your search.");
         }

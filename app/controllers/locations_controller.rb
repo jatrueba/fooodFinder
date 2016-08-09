@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
   before_action :save_location, only: :show
-  after_action :clear_location, only: :index
+  # before_action :save_coordinates, only: :show
+  after_action  :clear_location, only: :index
+  # after_action  :clear_coordinates, only: :index
 
   def index
   end
@@ -12,10 +14,9 @@ class LocationsController < ApplicationController
 
   def show
     location = params[:search_location] || session[:location]
-    coordinates = {lat: params[:lat], long: params[:long]}
+    #p location
+    coordinates = params[:lat_lon] || session[:lat_lon]
     @locations = Location.get_search_results(location, coordinates)
-    # p params[:lat]
-    # p params[:long]
   end
 
   # def new
