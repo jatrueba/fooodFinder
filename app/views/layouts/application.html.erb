@@ -9,7 +9,11 @@
   </head>
 
   <body>
-    
+
     <%= yield %>
+    <% if Rails.env.development? %>
+    <%= console %>
+    <%#= debug(params) %>
+    <%end%>
   </body>
 </html>
