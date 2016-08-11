@@ -34,12 +34,7 @@ class Location < ApplicationRecord
   #Use the lat and long provided by get_lat_and_long method to build the call to google API.
   #Pass the response to load_response, which will wrap the response in an @location instance.
   def self.call_google_places_api(lat_lon)
-    @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
-<<<<<<< d908db8eaad04c6fb41b3be49b5f391bad22d847
-    #{lat_lon}&type=restaurant&radius=1000&key=AIzaSyAJXiGppzM31B83N26w46jvTgjQ8wYCdwQ").parsed_response["results"]
-=======
-    #{lat},#{lon}&type=restaurant&radius=1000&key=#{ENV["GOOGLE_PLACES_API"]}", :verify => false ).parsed_response["results"]
->>>>>>> test commit
+    @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat_lon}&type=restaurant&radius=1000&key=#{ENV["GOOGLE_PLACES_API"]}", :verify => false ).parsed_response["results"]
     load_response(@response)
   end
 
@@ -48,15 +43,15 @@ class Location < ApplicationRecord
 
   def self.get_search_results(location, coordinates)
     puts "Coordinates #{coordinates}"
-    if coordinates
-      self.call_google_places_api(coordinates)
-    else
+    if location != ""
       # this is working
       puts "Location #{location}"
       search_locations = Geocoder.search(location)
       lat = search_locations[0].latitude
       lon = search_locations[0].longitude
       coordinates = (lat.to_s) + "," + (lon.to_s)
+      self.call_google_places_api(coordinates)
+    else
       self.call_google_places_api(coordinates)
     end
   end

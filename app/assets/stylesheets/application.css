@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+
+ body {
+   background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-87215.jpg");
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+
+ }
+
+
+ #app-name-letters {
+  font-family: 'Reem Kufi', sans-serif;
+  color: #D9D5CC;
+ }
+
+ #nav-bar {
+  color: #767777;
+ }

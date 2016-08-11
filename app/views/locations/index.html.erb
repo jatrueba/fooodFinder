@@ -1,30 +1,89 @@
+<!-- App LoGO -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <img src="http://www.hsdtaxlaw.com/wp-content/uploads/2016/05/logo_placeholder.png" alt="" />
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
 
-  <!-- <%= @location%> -->
-<h1> Welcome to Food Finder </h1>
 
-<h2>Find my location</h2>
 
-<button id="button-js">Find me</button>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6"><h2 id="find-header1" class="white-text">Find a restaurant by you!</h2></div>
+    <div class="col-sm-2"></div>
+  </div>
 
-<h2>Enter my location</h2>
+  <!-- RESTRAUNTS BY ME BUTTON -->
 
-<%= form_tag ('/locations/show') do  %>
-<p>
-   <%= hidden_field_tag :lat, nil, id: "lat" %>
-</p>
+  <div id="center" class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <button id="button-js" type="button" class="btn btn-primary">
+        Find me!
+      </button>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
 
-<p>
-   <%= hidden_field_tag :long, nil, id: "long" %>
-</p>
 
-<p>
- <%= text_field_tag :search_location  %>
-</p>
+  <!-- <div id="center" class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Radius <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">5 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">10 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">15 miles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  </div> -->
 
-<p>
- <%= submit_tag 'Find Restaurants'  %>
-</p>
 
-<% end %>
+  <!-- START OF SEARCH FOR restaurant -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-6"><h2 id="find-header2" class="white-text">Find restaurants by city or zip!</h2></div>
+      <div class="col-sm-2"></div>
+    </div>
 
-<!-- <%= link_to 'Register'  %> -->
+
+    <!-- Input for CITY OR ZIP -->
+    <%= form_tag ('/locations/show') do  %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= hidden_field_tag :lat, nil, id: "lat" %>
+          <%= hidden_field_tag :long, nil, id: "long" %>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+              <%= text_field_tag :search_location, nil, {:id => "text-box", :class => "form-control", :placeholder => "City or Zip"}  %>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+
+    <div id="center" class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="btn-group">
+            <%= submit_tag 'Find Restaurant!', :id => "find-restaurant-btn", :class => "btn btn-primary" %>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+    <% end %>

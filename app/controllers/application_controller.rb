@@ -13,12 +13,11 @@ class ApplicationController < ActionController::Base
     session[:location] = nil
   end
 
-  # def clear_coordinates
-  #   session[:lat_lon] = nil
-  # end
-  #
-  #
-  #
+  def clear_coordinates
+    session[:lat_lon] = nil
+  end
+
+
   def save_coordinates
     if session[:lat_lon] == nil
       session[:lat_lon] = params[:lat] + "," + params[:long]

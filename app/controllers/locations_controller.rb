@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   # before the show action if session[:location] has value run session else assign value of params[search_location]
   before_action :save_location, only: :show
-  before_action :save_coordinates, only: :show
+  # before_action :save_coordinates, only: :show
   after_action  :clear_location, only: :index
   # after_action  :clear_coordinates, only: :index
 
