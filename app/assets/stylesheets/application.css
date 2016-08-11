@@ -16,12 +16,7 @@
 
 
  body {
-   background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-87215.jpg");
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-
+   background: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-87215.jpg") no-repeat center center fixed;
  }
 
 
