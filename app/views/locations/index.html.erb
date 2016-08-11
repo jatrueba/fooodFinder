@@ -4,27 +4,25 @@
 
 <h2>Find my location</h2>
 
-<button id="button-js">Find me</button>
+<button id="find-me-js">Find me</button>
 
 <h2>Enter my location</h2>
 
 <%= form_tag ('/locations/show') do  %>
 <p>
-   <%= hidden_field_tag :lat, nil, id: "lat" %>
+<%= hidden_field_tag :lat, nil, id: "lat" %>
 </p>
 
 <p>
-   <%= hidden_field_tag :long, nil, id: "long" %>
+<%= hidden_field_tag :long, nil, id: "long" %>
 </p>
 
 <p>
- <%= text_field_tag :search_location  %>
+<%= text_field_tag :search_location  %>
 </p>
 
 <p>
- <%= submit_tag 'Find Restaurants'  %>
+<%= submit_tag 'Find Restaurants', id: "find-restaurant-js"  %>
 </p>
 
 <% end %>
-
-<!-- <%= link_to 'Register'  %> -->

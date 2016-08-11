@@ -9,7 +9,7 @@ class Location < ApplicationRecord
   #wrap it in a ruby @location object, load it in the @locations array,
   #return the @locations array to the location#show action.
   def self.load_response(response)
-    #p response
+    # p response.obj.nearbys(3)
     @locations = []
     response.each do |loc|
       @location = self.new
@@ -34,7 +34,7 @@ class Location < ApplicationRecord
   #Pass the response to load_response, which will wrap the response in an @location instance.
   def self.call_google_places_api(lat_lon)
     @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
-    #{lat_lon}&type=restaurant&radius=1000&key=AIzaSyAJXiGppzM31B83N26w46jvTgjQ8wYCdwQ").parsed_response["results"]
+    #{lat_lon}&type=restaurant&radius=4800&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response["results"]
     load_response(@response)
   end
 
@@ -42,18 +42,34 @@ class Location < ApplicationRecord
   #Once lat and long is obtained by Geocoder, pass the lat and long to call_google_places_api.
 
   def self.get_search_results(location, coordinates)
-    puts "Coordinates #{coordinates}"
-    if coordinates.length > 1
-      self.call_google_places_api(coordinates)
-    else
-      # this is working
-      puts "Location #{location}"
-      search_locations = Geocoder.search(location)
-      lat = search_locations[0].latitude
-      lon = search_locations[0].longitude
-      coordinates = (lat.to_s) + "," + (lon.to_s)
-      self.call_google_places_api(coordinates)
+      puts "Coordinates #{coordinates}"
+      if location != ""
+        puts "Location #{location}"
+        search_locations = Geocoder.search(location)
+        lat = search_locations[0].latitude
+        lon = search_locations[0].longitude
+        coordinates = (lat.to_s) + "," + (lon.to_s)
+        self.call_google_places_api(coordinates)
+      else
+        self.call_google_places_api(coordinates)
+      end
     end
-  end
+
+
+
+  # def self.get_search_results(location, coordinates)
+  #   puts "Coordinates #{coordinates}"
+  #   if coordinates.length > 1
+  #     self.call_google_places_api(coordinates)
+  #   else
+  #     # this is working
+  #     puts "Location #{location}"
+  #     search_locations = Geocoder.search(location)
+  #     lat = search_locations[0].latitude
+  #     lon = search_locations[0].longitude
+  #     coordinates = (lat.to_s) + "," + (lon.to_s)
+  #     self.call_google_places_api(coordinates)
+  #   end
+  # end
 
 end

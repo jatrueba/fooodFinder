@@ -1,30 +1,37 @@
 var latlon;
 $(document).ready(function() {
+
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            location.innerHTML = "Geolocation is not supported by this browser.";
+            location.innerHTML = "Location not found. Please enter your search.";
+            $('#find-restaurant-js').removeAttr('disabled');
         }
     }
-    // $('#id_input')attr('disabled','true').text('getting location');
+
     function showPosition(position) {
         latlon = position.coords;
         if (latlon !==null) {
           $('#lat').val(latlon.latitude);
           $('#long').val(latlon.longitude);
           alert("Location Found");
-          // jquery $(#id_input).val('Create Message')removeAttr()
-          //form_id.serialize
+          // $('#find-me-js').show().hide('<img src="assets/ajax-loader.gif" />');
+          $('#find-restaurant-js').removeAttr('disabled');
         } else {
           alert("Location not found. Please enter your search.");
         }
     }
 
-    $('#button-js').click(function() {
+    $('#find-me-js').click(function() {
+        $('#find-restaurant-js').attr('disabled', 'true');
+        // $('#find-me-js').hide().after('<img src="assets/ajax-loader.gif" />');
         getLocation();
-        console.log("hello");
+        evt.preventDefault();
     });
+
+    // val("<img id="spinny-thang" src="ajax-loader.gif" alt="spinny thang" height="42" width="42">")
+
 
     $('.search_location').click(function() {
         location.reload(false);
@@ -36,7 +43,23 @@ $(document).ready(function() {
         console.log("back something");
     });
 
+    //Convert address tags to google map links on show page's address links
+    $('#directions').click(function(){
+      $('#directions-btn').each(function () {
+            window.location = "http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text());
+       });
+    });
 });
+
+// $('#directions').click(function(){
+//    $('address').each(function () {;
+//      console.log("address hidden");
+//       var link = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(this).text() ) + "' target='_blank'>" + $(this).text() + "</a>";
+//       $(this).html(link);
+//       window.open(link);
+//    });
+// });
+
 
 // var x = document.getElementById("alert");
 
@@ -51,8 +74,8 @@ $(document).ready(function() {
 // console.log(results.vicinity);
 // });
 
-
-
-
 //  response = api.responseJSON["res"];
 //   console.log(response);
+
+// jquery $(#id_input).val('Create Message')removeAttr()
+//form_id.serialize

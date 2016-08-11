@@ -16,9 +16,11 @@ class LocationsController < ApplicationController
     location = params[:search_location] || session[:location]
     coordinates = params[:lat_lon] || session[:lat_lon]
     p coordinates
-    p location
-    @locations = Location.get_search_results(location, coordinates)
-
+    if location != nil || coordinates != nil
+      @locations = Location.get_search_results(location, coordinates)
+    else
+      render 'index'
+    end
   end
 
   # def new

@@ -11,10 +11,10 @@
       <%= image_tag(loc.image) %>
   </p>
 
-  <p>
+
       <strong>Address:</strong>
-      <%= loc.address %>
-  </p>
+      <p id="directions-btn"><%= loc.address %></p>
+
 
   <p>
       <strong>Price Range:</strong>
@@ -25,12 +25,17 @@
       <strong>Rating:</strong>
       <%= loc.rating %>
   </p>
-  <p>
-    <div class="search_location">
-        <%= submit_tag 'Next' %>
-    </div>
 
-  </p>
+  <div class="search_location">
+      <%= submit_tag 'Next' %>
+  </div>
 
+
+  <button>
+    <%= link_to "Home", root_path %>
+  </button>
+
+
+  <button id="directions"> Directions </button>
 
 </div>
