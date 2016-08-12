@@ -1,38 +1,36 @@
-#center {
+div {
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+  float: none;
+  }
+  margin: 0 auto;
+}
+
+.app-name {
+  font-family: 'Pacifico', cursive;
+  color: #D9D5CC;
+  font-size: 530%;
+  margin-bottom: 5%;
+  // opacity: 0.8;
+}
+
+
+.center-content {
   text-align: center;
   margin-bottom: 10px;
 }
 
+
 .white-text {
   color: #D9D5CC;
   font-family: 'Reem Kufi', sans-serif;
+  // opacity: 0.7;
 }
-
-
-#button-js {
-  margin-left: -1%;
-}
-
 
 
 #text-box {
-  margin-bottom: 20%;
-  margin-left: 50%;
-  border-radius: 6px;
-}
-
-
-#find-header1 {
-  margin-left: 6%;
-}
-
-#find-header2 {
-  margin-left: -2%;
-}
-
-input.form-control {
   text-align: center;
-  // width: 164px;
+  border-radius: 4px;
+  // opacity: 0.7;
 }
 
 
@@ -43,7 +41,24 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-
-#find-restaurant-btn {
-  margin-left: -10%;
+@media only screen and (min-width : 315px) and (max-device-width : 480px){
+  .app-name {
+    font-size: 325%;
+  }
+  .white-text {
+    font-size: 165%;
+  }
 }
+
+
+// @media only screen and (min-width : 316px){
+//   .app-name {
+//     font-size: 325%;
+//   }
+// }
+//
+// @media only screen and (min-width : 315px){
+//   .app-name {
+//     font-size: 325%;
+//   }
+// }

@@ -1,11 +1,11 @@
 <!-- App LoGO -->
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <img src="http://www.hsdtaxlaw.com/wp-content/uploads/2016/05/logo_placeholder.png" alt="" />
+  <div id="logo" class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
+      <h1 class="app-name">FoodFinder</h1>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4"></div>
   </div>
 </div>
 
@@ -13,27 +13,31 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-6"><h2 id="find-header1" class="white-text">Find a restaurant by you!</h2></div>
-    <div class="col-md-2"></div>
+    <div class="center-content" class="col-sm-4 col-xs-8"></div>
+    <div class="center-content" class="col-sm-6 col-xs-3">
+      <h2 id="find-header1" class="white-text">
+        Find a restaurant by you!
+      </h2>
+    </div>
+    <div class="center-content" class="col-sm-2 col-xs-6"></div>
   </div>
 
   <!-- RESTRAUNTS BY ME BUTTON -->
 
-  <div id="center" class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
+  <div class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
       <button id="button-js" type="button" class="btn btn-primary">
         Find me!
       </button>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4"></div>
   </div>
 
 
-  <!-- <div id="center" class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
+  <div class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
       <div class="btn-group">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Radius <span class="caret"></span>
@@ -47,43 +51,47 @@
         </ul>
       </div>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4"></div>
   </div>
-  </div> -->
+  </div>
 
 
   <!-- START OF SEARCH FOR restaurant -->
   <div class="container">
     <div class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-6"><h2 id="find-header2" class="white-text">Find restaurants by city or zip!</h2></div>
-      <div class="col-sm-2"></div>
+      <div class="center-content" class="col-sm-4"></div>
+      <div class="center-content" class="col-sm-6">
+        <h2 id="find-header2" class="white-text">
+          Find restaurants by city or zip!
+        </h2>
+      </div>
+      <div class="center-content" class="col-sm-2"></div>
     </div>
 
 
     <!-- Input for CITY OR ZIP -->
     <%= form_tag ('/locations/show') do  %>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="center-content" class="col-sm-4">
           <%= hidden_field_tag :lat, nil, id: "lat" %>
           <%= hidden_field_tag :long, nil, id: "long" %>
         </div>
-        <div class="col-sm-2">
+        <div class="center-content" class="col-sm-2">
           <div class="input-group">
-              <%= text_field_tag :search_location, nil, {:id => "text-box", :class => "form-control", :placeholder => "City or Zip"}  %>
+              <%= text_field_tag :search_location, nil, {:id => "text-box", :class => "form-control", :placeholder => "City or Zip"} %>
           </div>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="center-content" class="col-sm-4"></div>
       </div>
 
 
-    <div id="center" class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-4">
+    <div class="row">
+      <div class="center-content" class="col-sm-4"></div>
+      <div class="center-content" class="col-sm-4">
         <div class="btn-group">
             <%= submit_tag 'Find Restaurant!', :id => "find-restaurant-btn", :class => "btn btn-primary" %>
         </div>
       </div>
-      <div class="col-sm-4"></div>
+      <div class="center-content" class="col-sm-4"></div>
     </div>
     <% end %>

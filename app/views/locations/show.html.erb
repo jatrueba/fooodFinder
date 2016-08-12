@@ -1,40 +1,115 @@
-<h1>Restaurants Near You:</h1>
+<h1 class="white-text"; style="text-align: center;">Restaurants Near You:</h1>
 
 <% loc = @locations.sample %>
-<div class="restaurant">
-  <h4>
-      <strong>Name:</strong>
-      <%= loc.name %>
-  </h4>
 
-  <p>
-      <%= image_tag(loc.image) %>
-  </p>
-
-  <p>
-      <strong>Address:</strong>
-      <%= loc.address %>
-  </p>
-
-  <p>
-      <strong>Price Range:</strong>
-      <%= loc.price_range %>
-  </p>
-
-  <p>
-      <strong>Rating:</strong>
-      <%= loc.rating %>
-  </p>
-  <p>
-    <div class="search_location">
-        <%= submit_tag 'Next' %>
+ <!-- RESTAURANT NAME -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <h4 class="white-text">
+            <strong class="white-text">Name:</strong>
+            <%= loc.name %>
+        </h4>
+      </div>
     </div>
-
-  </p>
-
-
-  <p>
-    <%= link_to "Home", root_path, class: "btn btn-primary" %>
-  </p>
-
+    <div class="col-sm-4"></div>
+  </div>
 </div>
+
+        <!-- ICON -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <div>
+            <%= image_tag(loc.image) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+    <!-- ADDRESS -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <p class="white-text">
+            <strong class="white-text">Address:</strong>
+            <%= loc.address %>
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+     <!-- PRICE RANGE -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <p class="white-text">
+            <strong class="white-text">Price Range:</strong>
+            <%= loc.price_range %>
+        </p>
+      </div>
+    </div>
+    <div class="center-content" class="col-sm-4"></div>
+  </div>
+</div>
+
+        <!-- RATING -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <p class="white-text">
+            <strong class="white-text">Rating:</strong>
+            <%= loc.rating %>
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+
+   <!-- NEXT BUTTON -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <div class="search_location">
+            <%= submit_tag 'Next', class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+
+  <!-- HOME BUTTON -->
+<div class="container">
+ <div class="row">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-4">
+     <div>
+       <div class="search_location">
+         <%= link_to "Home", root_path, class: "btn btn-primary" %>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-4"></div>
+ </div>
+</div>
+<div class="restaurant">
