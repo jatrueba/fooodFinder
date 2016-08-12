@@ -46,22 +46,23 @@ class Location < ApplicationRecord
   #Use the lat and long provided by get_lat_and_long method to build the call to google API.
   #Pass the response to load_response, which will wrap the response in an @location instance.
   def self.call_google_places_api(lat_lon, radius)
-    puts "This is radius in API call#{radius}"
 
     search_radius = radius
     case search_radius
     when "5 miles"
-      radius = "8047"
+      api_radius = "8047"
     when "10 miles"
-      radius = "16093"
+      api_radius = "16093"
     when "15 miles"
-      radius = "24140"
+      api_radius = "24140"
     else
-      radius = "8047"
+      api_radius = "8047"
     end
 
+    puts "This is radius in API call#{api_radius}"
+
     @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
-    #{lat_lon}&type=restaurant&radius=#{radius}&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response["results"]
+    #{lat_lon}&type=restaurant&radius=#{api_radius}&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response["results"]
     load_response(@response)
   end
 

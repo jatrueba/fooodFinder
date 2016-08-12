@@ -4,20 +4,28 @@
 <!-- nav buttons -->
 <!-- <%= image_tag('restaurant.png')  %> -->
 
-<p>
+<!-- <p>
   <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
   <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
 </p>
 
-
-
 <p>
   <%= submit_tag 'Manual Search', id: 'manual-search-js' %>
-</p>
+</p> -->
 
 <!-- search form -->
-<div id='search-form'>
 
+  <div id='nav-buttons'>
+    <p>
+      <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
+      <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
+    </p>
+    <p>
+      <%= submit_tag 'Manual Search', id: 'manual-search-js' %>
+    </p>
+  </div>
+
+  <div id='search-form'>
   <%= form_tag('/locations/show', id: 'rest-search') do  %>
     <p>
       <%= hidden_field_tag :lat, nil, id: 'lat' %>
@@ -25,12 +33,32 @@
     <p>
       <%= hidden_field_tag :long, nil, id: 'long' %>
     </p>
+
+    <div id="radius-div">
+      <%= select_tag "radius", "<option>5 miles</option><option>10 miles</option><option>15 miles</option>".html_safe %>
+    </div>
+
+    <div id="price-range-div">
+      <%= select_tag "price-range", "<option>$</option><option>$$</option><option>$$$</option><option>$$$$</option>".html_safe %>
+    </div>
+
+
     <p>
       <%= text_field_tag :search_location  %>
     </p>
     <p>
       <%= submit_tag 'Find Restaurants', id: 'find-restaurant-js'  %>
     </p>
+
+  </div>
+<% end %>
+
+<p id='go-button-js'>
+   <%= submit_tag 'GO', id: 'go-js' %>
+</p>
+
+<!-- end of search form -->
+
 
     <!-- drop-down -->
     <!-- <div id="center" class="row">
@@ -56,6 +84,3 @@
 
   <!-- # => <select id="count" name="count"><option>1</option><option>2</option>
   #    <option>3</option><option>4</option></select>   -->
-  </div>
-  <% end %>
-  <!-- end of search form -->
