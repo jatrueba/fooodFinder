@@ -1,29 +1,61 @@
 
-  <!-- <%= @location%> -->
-<h1> Welcome to Food Finder </h1>
+<h1> Food Finder </h1>
 
-<h2>Find my location</h2>
-
-<button id="find-me-js">Find me</button>
-<%= image_tag("ajax-loader.gif", id: "spinner-image")  %>
-
-<h2>Enter my location</h2>
-
-<%= form_tag ('/locations/show') do  %>
-<p>
-<%= hidden_field_tag :lat, nil, id: "lat" %>
-</p>
+<!-- nav buttons -->
+<!-- <%= image_tag('restaurant.png')  %> -->
 
 <p>
-<%= hidden_field_tag :long, nil, id: "long" %>
+  <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
+  <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
 </p>
+
+
 
 <p>
-<%= text_field_tag :search_location  %>
+  <%= submit_tag 'Manual Search', id: 'manual-search-js' %>
 </p>
 
-<p>
-<%= submit_tag 'Find Restaurants', id: "find-restaurant-js"  %>
-</p>
+<!-- search form -->
+<div id='search-form'>
 
-<% end %>
+  <%= form_tag('/locations/show', id: 'rest-search') do  %>
+    <p>
+      <%= hidden_field_tag :lat, nil, id: 'lat' %>
+    </p>
+    <p>
+      <%= hidden_field_tag :long, nil, id: 'long' %>
+    </p>
+    <p>
+      <%= text_field_tag :search_location  %>
+    </p>
+    <p>
+      <%= submit_tag 'Find Restaurants', id: 'find-restaurant-js'  %>
+    </p>
+
+    <!-- drop-down -->
+    <!-- <div id="center" class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Radius <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">5 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">10 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">15 miles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-4"></div>
+    </div>
+    </div> -->
+
+
+  <!-- # => <select id="count" name="count"><option>1</option><option>2</option>
+  #    <option>3</option><option>4</option></select>   -->
+  </div>
+  <% end %>
+  <!-- end of search form -->

@@ -11,10 +11,10 @@
       <%= image_tag(loc.image) %>
   </p>
 
-
-      <strong>Address:</strong>
-      <p id="directions-btn"><%= loc.address %></p>
-
+  <strong>Address:</strong>
+  <p id="directions-btn">
+    <%= loc.address %>
+  </p>
 
   <p>
       <strong>Price Range:</strong>
@@ -23,7 +23,7 @@
 
   <p>
       <strong>Rating:</strong>
-      <%= loc.rating %>
+        <%= loc.rating%><span> / 5</span>
   </p>
 
   <div class="search_location">
@@ -36,6 +36,15 @@
   </button>
 
 
-  <button id="directions"> Directions </button>
+    <p>
+      <!-- <%#= link_to(https://www.google.com/search?q=wynwood+images&oq=dog+images), 'images'  %> -->
+      <%= link_to "Google Images", "https://www.google.com/search?q=#{loc.name}+images&oq=#{loc.address}+images" %>
+  <!-- # => <a href="/searches?query=ruby+on+rails">Ruby on Rails search</a> -->
+    </p>
+
+
+  <button id="directions">
+    Directions
+  </button>
 
 </div>

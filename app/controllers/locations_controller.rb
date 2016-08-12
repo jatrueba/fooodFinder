@@ -15,9 +15,10 @@ class LocationsController < ApplicationController
   def show
     location = params[:search_location] || session[:location]
     coordinates = params[:lat_lon] || session[:lat_lon]
-    #p coordinates
+    radius = params[:radius]
+    puts "Radius in controller #{radius}"
     if location != nil || coordinates != nil
-      @locations = Location.get_search_results(location, coordinates)
+      @locations = Location.get_search_results(location, coordinates, radius)
     else
       render 'index'
     end

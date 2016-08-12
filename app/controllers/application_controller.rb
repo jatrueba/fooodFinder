@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
     session[:location] ||= params[:search_location]
   end
 
-# rescue NoMethodError => exception
-#  puts "Hit a NoMethodError"
-
   #called before the show action
   def save_coordinates
     if session[:lat_lon] == nil
@@ -29,6 +26,9 @@ class ApplicationController < ActionController::Base
     session[:lat_lon] = nil
   end
 
+  # def set_cache_headers
+  #   response.headers["Cache-Control"] = "private, max-age=0, no-store"
+  # end
   #called after index action (when we come back to the home page)
   # def clear_location
   #   session.delete(:location)
@@ -42,8 +42,6 @@ class ApplicationController < ActionController::Base
   #clear the cache to avoid persistence of cached varialbles [:lat_lon],
   #[:location] when hitting the back button.
 
-  # def set_cache_headers
-  #   response.headers["Cache-Control"] = "private, max-age=0, no-store"
-  # end
+
 
 end
