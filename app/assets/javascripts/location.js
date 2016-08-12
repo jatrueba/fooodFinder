@@ -1,4 +1,3 @@
-var latlon;
 $(document).ready(function() {
 
     function getLocation() {
@@ -6,32 +5,34 @@ $(document).ready(function() {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             location.innerHTML = "Location not found. Please enter your search.";
-            $('#find-restaurant-js').removeAttr('disabled');
+            changeControlState();
         }
     }
 
     function showPosition(position) {
-        latlon = position.coords;
-        if (latlon !==null) {
+      var latlon = position.coords;
+        if (latlon !== null) {
           $('#lat').val(latlon.latitude);
           $('#long').val(latlon.longitude);
-          alert("Location Found");
-          // $('#find-me-js').show().hide('<img src="assets/ajax-loader.gif" />');
-          $('#find-restaurant-js').removeAttr('disabled');
         } else {
           alert("Location not found. Please enter your search.");
         }
+        changeControlsState();
+    }
+
+    function changeControlsState() {
+      $("#spinner-image").hide();
+      $("#find-restaurant-js").removeAttr('disabled');
+      $('#find-me-js').show();
     }
 
     $('#find-me-js').click(function() {
         $('#find-restaurant-js').attr('disabled', 'true');
-        // $('#find-me-js').hide().after('<img src="assets/ajax-loader.gif" />');
+        $(this).hide();
+        $("#spinner-image").show();
         getLocation();
-        evt.preventDefault();
+        // evt.preventDefault();
     });
-
-    // val("<img id="spinny-thang" src="ajax-loader.gif" alt="spinny thang" height="42" width="42">")
-
 
     $('.search_location').click(function() {
         location.reload(false);

@@ -42,9 +42,9 @@ class Location < ApplicationRecord
   #Once lat and long is obtained by Geocoder, pass the lat and long to call_google_places_api.
 
   def self.get_search_results(location, coordinates)
-      puts "Coordinates #{coordinates}"
+      #puts "Coordinates #{coordinates}"
       if location != ""
-        puts "Location #{location}"
+        #puts "Location #{location}"
         search_locations = Geocoder.search(location)
         lat = search_locations[0].latitude
         lon = search_locations[0].longitude
