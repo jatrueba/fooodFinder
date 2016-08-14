@@ -56,7 +56,7 @@ class Location < ApplicationRecord
       api_radius = '8047'
     end
 
-    puts "This is radius in API call#{api_radius}"
+    # puts "This is radius in API call#{api_radius}"
 
     @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
     #{lat_lon}&type=restaurant&radius=#{api_radius}&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response['results']
@@ -67,7 +67,7 @@ class Location < ApplicationRecord
   #Once lat and long is obtained by Geocoder, pass the lat and long to call_google_places_api.
   def self.get_search_results(location, coordinates, radius)
     search_radius = radius
-    puts "This is radius in model#{search_radius}"
+    # puts "This is radius in model#{search_radius}"
     if location != ''
       search_locations = Geocoder.search(location)
       lat = search_locations[0].latitude
