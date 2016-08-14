@@ -9,28 +9,36 @@
   </div>
 </div>
 
-
-
-<div class="container">
-  <div class="row">
-    <div class="center-content" class="col-sm-4 col-xs-8"></div>
-    <div class="center-content" class="col-sm-6 col-xs-3">
-      <h2 id="find-header1" class="white-text">
-        Find a restaurant by you!
-      </h2>
-    </div>
-    <div class="center-content" class="col-sm-2 col-xs-6"></div>
-  </div>
-
-  <!-- RESTRAUNTS BY ME BUTTON -->
+    <!-- RESTRAUNTS BY ME BUTTON -->
 
   <div class="row">
     <div class="center-content" class="col-sm-4"></div>
     <div class="center-content" class="col-sm-4">
-      <button id="button-js" type="button" class="btn btn-primary">
-        Find me!
-      </button>
+      <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js', class: 'btn btn-primary' %>
+      <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
     </div>
+    <div class="center-content" class="col-sm-4"></div>
+  </div>
+
+
+
+    <!-- MAUAL SEARCH BUTTON ####  SHOWS HIDDEN FORM -->
+  <div class="row">
+    <div class="center-content" class="col-sm-4">
+      <%= submit_tag 'Manual Search', id: 'manual-search-js', class: "btn btn-primary" %>
+    </div>
+
+     <!-- HIDDEN FORM -->
+    <div id="search-form" class="center-content" class="col-sm-4">
+      <%= form_tag('/locations/show', id: 'rest-search') do  %>
+      <%= hidden_field_tag :lat, nil, id: "lat" %>
+      <%= hidden_field_tag :long, nil, id: "long" %>
+      <%= text_field_tag :search_location, nil, id: "text-field-tag", placeholder: "Enter City or Zip" %>
+      <div>
+        <%= submit_tag 'Find Restaurants', id: 'find-restaurant-js', class: "btn btn-primary"  %>
+      </div>
+    </div>
+    <% end %>
     <div class="center-content" class="col-sm-4"></div>
   </div>
 
@@ -57,7 +65,7 @@
 
 
   <!-- START OF SEARCH FOR restaurant -->
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="center-content" class="col-sm-4"></div>
       <div class="center-content" class="col-sm-6">
@@ -66,15 +74,27 @@
         </h2>
       </div>
       <div class="center-content" class="col-sm-2"></div>
-    </div>
+    </div> -->
 
 
-    <!-- Input for CITY OR ZIP -->
-    <%= form_tag ('/locations/show') do  %>
+
+    <!-- <div class="container">
+      <div class="row">
+        <div class="center-content" class="col-sm-4 col-xs-8"></div>
+        <div class="center-content" class="col-sm-6 col-xs-3">
+          <h2 id="find-header1" class="white-text">
+            Find a restaurant by you!
+          </h2>
+        </div>
+        <div class="center-content" class="col-sm-2 col-xs-6"></div>
+      </div> -->
+
+
+                                 <!-- Input for CITY OR ZIP -->
+    <!-- <%= form_tag ('/locations/show') do  %>
       <div class="row">
         <div class="center-content" class="col-sm-4">
-          <%= hidden_field_tag :lat, nil, id: "lat" %>
-          <%= hidden_field_tag :long, nil, id: "long" %>
+
         </div>
         <div class="center-content" class="col-sm-2">
           <div class="input-group">
@@ -83,15 +103,15 @@
         </div>
         <div class="center-content" class="col-sm-4"></div>
       </div>
+    <% end %> -->
 
 
-    <div class="row">
-      <div class="center-content" class="col-sm-4"></div>
-      <div class="center-content" class="col-sm-4">
-        <div class="btn-group">
-            <%= submit_tag 'Find Restaurant!', :id => "find-restaurant-btn", :class => "btn btn-primary" %>
-        </div>
-      </div>
-      <div class="center-content" class="col-sm-4"></div>
-    </div>
-    <% end %>
+
+                            <!-- SELECT BOXES FOR RADIUS AND PRICE RANGE -->
+<!-- <div id="radius-div">
+  <%= select_tag "radius", "<option>5 miles</option><option>10 miles</option><option>15 miles</option>".html_safe %>
+</div>
+
+<div id="price-range-div">
+  <%= select_tag "price-range", "<option>$</option><option>$$</option><option>$$$</option><option>$$$$</option>".html_safe %>
+</div> -->

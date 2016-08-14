@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   post 'locations/show'
 
-  get 'locations/show'
+  get 'locations/show', to: 'locations#show'
 
 
 

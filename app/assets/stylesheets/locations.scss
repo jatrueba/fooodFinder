@@ -12,6 +12,28 @@ div {
   margin-bottom: 5%;
 }
 
+#text-field-tag {
+  margin-bottom: 3%;
+  border-radius: 5px;
+}
+
+#logo {
+  margin-bottom: 22%;
+}
+
+
+#next-btn {
+  width: 22%;
+}
+
+#directions {
+  margin-left: 12%;
+}
+
+
+#center {
+  text-align: center;
+}
 
 .center-content {
   text-align: center;
@@ -50,6 +72,9 @@ input:-webkit-autofill:active {
   strong.white-text {
     font-size: 90%;
   }
+  #restaurant-img {
+    width: 100%;
+  }
 }
 
 #next-btn {
@@ -69,9 +94,13 @@ h1.app-name {
   background-color: black;
   border-radius: 24px;
   border: 1px grey solid;
-  margin-top: 58%;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  margin-top: 5%;
+  padding-bottom: 27px;
+}
+
+
+#rating-margin {
+  margin-bottom: 6%;
 }
 
 // @media only screen and (min-width : 316px){

@@ -1,114 +1,105 @@
-<!-- <h1 class="white-text"; style="text-align: center;">Restaurants Near You:</h1> -->
-
 <% loc = @locations.sample %>
 
  <!-- RESTAURANT NAME -->
  <div class="main-container">
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div>
-        <h4 class="white-text">
-            <strong class="white-text">Name:</strong>
-            <%= loc.name %>
-        </h4>
-      </div>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-</div>
-
-        <!-- ICON -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
         <div>
-            <%= image_tag(loc.image) %>
+          <h4 id="center" class="white-text">
+              <%= loc.name %>
+          </h4>
         </div>
       </div>
+      <div class="col-sm-4"></div>
     </div>
-    <div class="col-sm-4"></div>
   </div>
-</div>
 
-    <!-- ADDRESS -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div>
-        <p class="white-text">
-            <strong class="white-text">Address:</strong>
-            <%= loc.address %>
-        </p>
-      </div>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-</div>
-
-     <!-- PRICE RANGE -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div>
-        <p class="white-text">
-            <strong class="white-text">Price Range:</strong>
-            <%= loc.price_range %>
-        </p>
-      </div>
-    </div>
-    <div class="center-content" class="col-sm-4"></div>
-  </div>
-</div>
-
-        <!-- RATING -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div>
-        <p class="white-text">
-            <strong class="white-text">Rating:</strong>
-            <%= loc.rating %>
-        </p>
-      </div>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-</div>
-
-
-   <!-- NEXT BUTTON -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <div>
-        <div class="search_location">
-          <%= link_to "Home", root_path, class: "btn btn-primary" %>
-          <%= submit_tag 'Next', class: "btn btn-primary", id: "next-btn" %>
+          <!-- ICON -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div>
+          <div id="image-container">
+            <% if !loc.image.include?(".png") %>
+              <%= image_tag "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{loc.image}&key=#{ENV['GOOGLE_PLACES_API']}", id: "restaurant-img", height: "196" %>
+            <% else %>
+              <%= image_tag loc.image, id: "restaurant-img" %>
+            <% end %>
+          </div>
         </div>
       </div>
+      <div class="col-sm-4"></div>
     </div>
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4"></div>
   </div>
-</div>
+
+      <!-- ADDRESS -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div>
+          <p class="white-text" id="directions-btn">
+              <%= loc.address %>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+
+       <!-- PRICE RANGE -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div>
+          <p class="white-text">
+              <strong class="white-text">Price Range:</strong>
+              <%= loc.price_range %>
+          </p>
+        </div>
+      </div>
+      <div class="center-content" class="col-sm-4"></div>
+    </div>
+  </div>
+
+          <!-- RATING -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4" id="rating-margin">
+        <div>
+          <p class="white-text">
+              <strong class="white-text">Rating:</strong>
+              <%= loc.rating %><span> / 5</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+
+
+     <!-- BUTTON GROUP -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div>
+          <div class="search_location">
+            <%= link_to "Home", root_path, class: "btn btn-primary" %>
+            <%= submit_tag 'Next', class: "btn btn-primary", id: "next-btn" %>
+            <%= submit_tag 'Directions', class: "btn btn-primary", id: "directions" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
 
 </div>
-
-  <!-- HOME BUTTON -->
-<!-- <div class="container">
- <div class="row">
-   <div class="col-sm-4"></div>
-   <div class="col-sm-4"></div>
-   <div class="col-sm-4"></div>
- </div>
-</div>
-<div class="restaurant"> -->
