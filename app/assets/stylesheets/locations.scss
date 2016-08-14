@@ -10,7 +10,6 @@ div {
   color: #D9D5CC;
   font-size: 530%;
   margin-bottom: 5%;
-  // opacity: 0.8;
 }
 
 
@@ -57,13 +56,22 @@ input:-webkit-autofill:active {
   float: right;
 }
 
-
+h1.app-name {
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 5%;
+  background-color: lightslategray;
+  border-radius: 13px;
+  border: solid 1px;
+}
 
 .main-container {
   background-color: black;
   border-radius: 24px;
   border: 1px grey solid;
   margin-top: 58%;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 // @media only screen and (min-width : 316px){

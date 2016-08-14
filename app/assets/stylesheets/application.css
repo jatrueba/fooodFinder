@@ -30,3 +30,9 @@
   color: #767777;
   opacity: 0.9;
  }
+
+
+.btn-primary {
+  background-color: initial;
+  border: 1px solid white;
+}
