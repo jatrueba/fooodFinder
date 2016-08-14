@@ -3,6 +3,9 @@
 <% loc = @locations.sample %>
 
  <!-- RESTAURANT NAME -->
+ <div class="main-container">
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4"></div>
@@ -85,31 +88,27 @@
    <!-- NEXT BUTTON -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"></div>
     <div class="col-sm-4">
       <div>
         <div class="search_location">
-            <%= submit_tag 'Next', class: "btn btn-primary" %>
+          <%= link_to "Home", root_path, class: "btn btn-primary" %>
+          <%= submit_tag 'Next', class: "btn btn-primary", id: "next-btn" %>
         </div>
       </div>
     </div>
     <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
   </div>
 </div>
 
+</div>
 
   <!-- HOME BUTTON -->
-<div class="container">
+<!-- <div class="container">
  <div class="row">
    <div class="col-sm-4"></div>
-   <div class="col-sm-4">
-     <div>
-       <div class="search_location">
-         <%= link_to "Home", root_path, class: "btn btn-primary" %>
-       </div>
-     </div>
-   </div>
+   <div class="col-sm-4"></div>
    <div class="col-sm-4"></div>
  </div>
 </div>
-<div class="restaurant">
+<div class="restaurant"> -->

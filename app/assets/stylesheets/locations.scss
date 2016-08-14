@@ -46,10 +46,25 @@ input:-webkit-autofill:active {
     font-size: 325%;
   }
   .white-text {
-    font-size: 165%;
+    font-size: 140%;
+  }
+  strong.white-text {
+    font-size: 90%;
   }
 }
 
+#next-btn {
+  float: right;
+}
+
+
+
+.main-container {
+  background-color: black;
+  border-radius: 24px;
+  border: 1px grey solid;
+  margin-top: 58%;
+}
 
 // @media only screen and (min-width : 316px){
 //   .app-name {
