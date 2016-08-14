@@ -14,7 +14,6 @@
 </p> -->
 
 <!-- search form -->
-
   <div id='nav-buttons'>
     <p>
       <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
@@ -34,13 +33,13 @@
       <%= hidden_field_tag :long, nil, id: 'long' %>
     </p>
 
-    <div id="radius-div">
+    <!-- <div id="radius-div">
       <%= select_tag "radius", "<option>5 miles</option><option>10 miles</option><option>15 miles</option>".html_safe %>
     </div>
 
     <div id="price-range-div">
       <%= select_tag "price-range", "<option>$</option><option>$$</option><option>$$$</option><option>$$$$</option>".html_safe %>
-    </div>
+    </div> -->
 
 
     <p>
@@ -53,34 +52,6 @@
   </div>
 <% end %>
 
-<p id='go-button-js'>
+<!-- <p id='go-button-js'>
    <%= submit_tag 'GO', id: 'go-js' %>
-</p>
-
-<!-- end of search form -->
-
-
-    <!-- drop-down -->
-    <!-- <div id="center" class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Radius <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">5 miles</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">10 miles</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">15 miles</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-xs-4"></div>
-    </div>
-    </div> -->
-
-
-  <!-- # => <select id="count" name="count"><option>1</option><option>2</option>
-  #    <option>3</option><option>4</option></select>   -->
+</p> -->
