@@ -24,32 +24,4 @@ class LocationsController < ApplicationController
     end
   end
 
-  # def new
-  #   @location = Location.new
-  # end
-
-  # def create
-  #   #@restaurant = Location.new(location_params)
-  #   @location.save
-  # end
-  #
-  # private
-  #
-  # def loacation_params
-  #   params.require(:location).permit(:name, :address, :phone, :website, :rating, :price_range, :image, :latitude, :longitude)
-  # end
-
 end
-
-
-
-
-
-
-
-
-
-
-# @client = GooglePlaces::Client.new(API_KEY)#(AIzaSyAuw4no8ETufFiyu3FrBgOf4_rtZODlIoU)
-# @client.spots(-33.8670522, 151.1957362, :types => ['restaurant','food'])
-# p @client

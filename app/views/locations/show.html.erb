@@ -8,7 +8,11 @@
   </h4>
 
   <p>
-      <%= image_tag(loc.image) %>
+      <% if !loc.image.include?(".png") %>
+        <%= image_tag "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{loc.image}&key=#{ENV['GOOGLE_PLACES_API']}" %>
+      <% else %>
+        <%= image_tag loc.image %>
+      <% end %>
   </p>
 
   <strong>Address:</strong>
@@ -34,14 +38,6 @@
   <button>
     <%= link_to "Home", root_path %>
   </button>
-
-
-    <p>
-      <!-- <%#= link_to(https://www.google.com/search?q=wynwood+images&oq=dog+images), 'images'  %> -->
-      <%= link_to "Google Images", "https://www.google.com/search?q=#{loc.name}+images&oq=#{loc.address}+images" %>
-  <!-- # => <a href="/searches?query=ruby+on+rails">Ruby on Rails search</a> -->
-    </p>
-
 
   <button id="directions">
     Directions

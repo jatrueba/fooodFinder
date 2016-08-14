@@ -8,34 +8,31 @@ class Location < ApplicationRecord
   #Take each location in the google places API response,
   #wrap it in a ruby @location object, load it in the @locations array,
   #return the @locations array to the location#show action.
-   #in the struggle, it's real!!
+  #in the struggle, it's real!!
   def self.load_response(response)
-    p response.count
     @locations = []
     response.each do |loc|
       @location = self.new
-      @location.name = loc["name"]
-      @location.address = loc["vicinity"]
-      @location.rating = loc["rating"]
+      @location.name = loc['name']
+      @location.address = loc['vicinity']
+      @location.rating = loc['rating']
 
-      if loc["icon"].include?("restaurant")
-        @location.image = "restaurant.png"
-      elsif loc["icon"].include?("bar")
-        @location.image = "bar.png"
+      if loc['photos']
+        @location.image = loc['photos'][0]['photo_reference']
       else
-        @location.image = "restaurant.png"
+        @location.image = 'restaurant.png'
       end
 
-      price_range = loc["price_level"]
+      price_range = loc['price_level']
       case price_range
       when 0..1
-        @location.price_range = "$"
+        @location.price_range = '$'
       when 1..2
-        @location.price_range = "$$"
+        @location.price_range = '$$'
       when 2..3
-        @location.price_range = "$$$"
+        @location.price_range = '$$$'
       when 3..4
-        @location.price_range = "$$$$"
+        @location.price_range = '$$$$'
       end
       @locations << @location
     end
@@ -49,20 +46,20 @@ class Location < ApplicationRecord
 
     search_radius = radius
     case search_radius
-    when "5 miles"
-      api_radius = "8047"
-    when "10 miles"
-      api_radius = "16093"
-    when "15 miles"
-      api_radius = "24140"
+    when '5 miles'
+      api_radius = '8047'
+    when '10 miles'
+      api_radius = '16093'
+    when '15 miles'
+      api_radius = '24140'
     else
-      api_radius = "8047"
+      api_radius = '8047'
     end
 
     puts "This is radius in API call#{api_radius}"
 
     @response =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=
-    #{lat_lon}&type=restaurant&radius=#{api_radius}&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response["results"]
+    #{lat_lon}&type=restaurant&radius=#{api_radius}&key=#{ENV['GOOGLE_PLACES_API']}").parsed_response['results']
     load_response(@response)
   end
 
@@ -71,11 +68,11 @@ class Location < ApplicationRecord
   def self.get_search_results(location, coordinates, radius)
     search_radius = radius
     puts "This is radius in model#{search_radius}"
-    if location != ""
+    if location != ''
       search_locations = Geocoder.search(location)
       lat = search_locations[0].latitude
       lon = search_locations[0].longitude
-      coordinates = (lat.to_s) + "," + (lon.to_s)
+      coordinates = (lat.to_s) + ',' + (lon.to_s)
       self.call_google_places_api(coordinates, search_radius)
     else
       self.call_google_places_api(coordinates, search_radius)
