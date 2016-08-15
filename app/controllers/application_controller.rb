@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :set_cache_headers
 
   private
 
@@ -9,7 +8,15 @@ class ApplicationController < ActionController::Base
     session[:location] ||= params[:search_location]
   end
 
-  #called before the show action
+  #called after index action (when we come back to the home page)
+  def clear_location
+    session[:location] = nil
+  end
+
+  def clear_coordinates
+    session[:lat_lon] = nil
+  end
+
   def save_coordinates
     if session[:lat_lon] == nil
       session[:lat_lon] = params[:lat] + "," + params[:long]
@@ -18,13 +25,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def clear_location
-    session[:location] = nil
-  end
 
-  def clear_coordinates
-    session[:lat_lon] = nil
-  end
 
   # def set_cache_headers
   #   response.headers["Cache-Control"] = "private, max-age=0, no-store"

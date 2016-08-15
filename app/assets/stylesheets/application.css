@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+
+ body {
+   background: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-87215.jpg") no-repeat center center fixed;
+   opacity: 0.7;
+ }
+
+
+ #app-name-letters {
+  font-family: 'Pacifico', cursive;
+  color: #D9D5CC;
+ }
+
+ #nav-bar {
+  color: #767777;
+  opacity: 0.9;
+ }
+
+
+.btn-primary {
+  background-color: initial;
+  border: 1px solid white;
+}

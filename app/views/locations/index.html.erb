@@ -1,57 +1,117 @@
+<!-- App LoGO -->
+<div class="container home">
+  <div id="logo" class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
+      <h1 class="app-name">FoodFinder</h1>
+    </div>
+    <div class="center-content" class="col-sm-4"></div>
+  </div>
+</div>
 
-<h1> Food Finder </h1>
+    <!-- RESTRAUNTS BY ME BUTTON -->
 
-<!-- nav buttons -->
-<!-- <%= image_tag('restaurant.png')  %> -->
-
-<!-- <p>
-  <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
-  <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
-</p>
-
-<p>
-  <%= submit_tag 'Manual Search', id: 'manual-search-js' %>
-</p> -->
-
-<!-- search form -->
-  <div id='nav-buttons'>
-    <p>
-      <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js' %>
+  <div class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
+      <%= submit_tag 'Find Restaurants Near Me', id: 'find-me-js', class: 'btn btn-primary' %>
       <%= image_tag('ajax-loader.gif', id: 'spinner-image') %>
-    </p>
-    <p>
-      <%= submit_tag 'Manual Search', id: 'manual-search-js' %>
-    </p>
+    </div>
+    <div class="center-content" class="col-sm-4"></div>
   </div>
 
-  <div id='search-form'>
-  <%= form_tag('/locations/show', id: 'rest-search') do  %>
-    <p>
-      <%= hidden_field_tag :lat, nil, id: 'lat' %>
-    </p>
-    <p>
-      <%= hidden_field_tag :long, nil, id: 'long' %>
-    </p>
 
-    <!-- <div id="radius-div">
-      <%= select_tag "radius", "<option>5 miles</option><option>10 miles</option><option>15 miles</option>".html_safe %>
+
+    <!-- MAUAL SEARCH BUTTON ####  SHOWS HIDDEN FORM -->
+  <div class="row">
+    <div class="center-content" class="col-sm-4">
+      <%= submit_tag 'Search', id: 'manual-search-js', class: "btn btn-primary" %>
     </div>
 
-    <div id="price-range-div">
-      <%= select_tag "price-range", "<option>$</option><option>$$</option><option>$$$</option><option>$$$$</option>".html_safe %>
+     <!-- HIDDEN FORM -->
+    <div id="search-form" class="center-content" class="col-sm-4">
+      <%= form_tag('/locations/show', id: 'rest-search') do  %>
+      <%= hidden_field_tag :lat, nil, id: "lat" %>
+      <%= hidden_field_tag :long, nil, id: "long" %>
+      <%= text_field_tag :search_location, nil, id: "text-field-tag", placeholder: "Enter City or Zip" %>
+      <div>
+        <%= submit_tag 'Find Restaurants', id: 'find-restaurant-js', class: "btn btn-primary"  %>
+      </div>
+    </div>
+    <% end %>
+    <div class="center-content" class="col-sm-4"></div>
+  </div>
+
+
+  <!-- <div class="row">
+    <div class="center-content" class="col-sm-4"></div>
+    <div class="center-content" class="col-sm-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Radius <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">5 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">10 miles</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">15 miles</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="center-content" class="col-sm-4"></div>
+  </div>
+  </div> -->
+
+
+  <!-- START OF SEARCH FOR restaurant -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="center-content" class="col-sm-4"></div>
+      <div class="center-content" class="col-sm-6">
+        <h2 id="find-header2" class="white-text">
+          Find restaurants by city or zip!
+        </h2>
+      </div>
+      <div class="center-content" class="col-sm-2"></div>
     </div> -->
 
 
-    <p>
-      <%= text_field_tag :search_location  %>
-    </p>
-    <p>
-      <%= submit_tag 'Find Restaurants', id: 'find-restaurant-js'  %>
-    </p>
 
-  </div>
-<% end %>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="center-content" class="col-sm-4 col-xs-8"></div>
+        <div class="center-content" class="col-sm-6 col-xs-3">
+          <h2 id="find-header1" class="white-text">
+            Find a restaurant by you!
+          </h2>
+        </div>
+        <div class="center-content" class="col-sm-2 col-xs-6"></div>
+      </div> -->
 
-<!-- <p id='go-button-js'>
-   <%= submit_tag 'GO', id: 'go-js' %>
-</p> -->
+
+                                 <!-- Input for CITY OR ZIP -->
+    <!-- <%= form_tag ('/locations/show') do  %>
+      <div class="row">
+        <div class="center-content" class="col-sm-4">
+
+        </div>
+        <div class="center-content" class="col-sm-2">
+          <div class="input-group">
+              <%= text_field_tag :search_location, nil, {:id => "text-box", :class => "form-control", :placeholder => "City or Zip"} %>
+          </div>
+        </div>
+        <div class="center-content" class="col-sm-4"></div>
+      </div>
+    <% end %> -->
+
+
+
+                            <!-- SELECT BOXES FOR RADIUS AND PRICE RANGE -->
+<!-- <div id="radius-div">
+  <%= select_tag "radius", "<option>5 miles</option><option>10 miles</option><option>15 miles</option>".html_safe %>
+</div>
+
+<div id="price-range-div">
+  <%= select_tag "price-range", "<option>$</option><option>$$</option><option>$$$</option><option>$$$$</option>".html_safe %>
+</div> -->
