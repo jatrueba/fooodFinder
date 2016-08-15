@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-      $('.search_location').click(function() {
+      $('#next-btn').click(function() {
           location.reload(false);
       });
 
@@ -11,8 +11,11 @@ $(document).ready(function() {
 
       //Convert address tags to google map links on show page's address links
       $('#directions').click(function(){
+        event.preventDefault();
         $('#directions-btn').each(function () {
-              window.location = 'http://maps.google.com/maps?q=' + encodeURIComponent( $(this).text());
+              var loc = 'http://maps.google.com/maps?q=' + encodeURIComponent($(this).text());
+              console.log(loc);
+              window.location = 'http://maps.google.com/maps?q=' + encodeURIComponent($(this).text());
          });
       });
 });
