@@ -10,34 +10,45 @@ class Location < ApplicationRecord
   #return the @locations array to the location#show action.
   #in the struggle, it's real!!
   def self.load_response(response)
-    @locations = []
-    response.each do |loc|
-      @location = self.new
-      @location.name = loc['name']
-      @location.address = loc['vicinity']
-      @location.rating = loc['rating']
-
-      if loc['photos']
-        @location.image = loc['photos'][0]['photo_reference']
-      else
-        @location.image = 'restaurant.png'
-      end
-
-      price_range = loc['price_level']
-      case price_range
-      when 0..1
-        @location.price_range = '$'
-      when 1..2
-        @location.price_range = '$$'
-      when 2..3
-        @location.price_range = '$$$'
-      when 3..4
-        @location.price_range = '$$$$'
-      end
+    puts "This is #{response}"
+    if response.empty?
+      @locations = []
+      @location =self.new
+      @location.name = "No restaurants around the area"
+      @location.address = ""
+      @location.rating = ""
+      @location.image = "restaurant.png"
+      @locations
       @locations << @location
-    end
+    else
+      @locations = []
+      response.each do |loc|
+        @location = self.new
+        @location.name = loc['name']
+        @location.address = loc['vicinity']
+        @location.rating = loc['rating']
 
+        if loc['photos']
+          @location.image = loc['photos'][0]['photo_reference']
+        else
+          @location.image = 'restaurant.png'
+        end
+
+        price_range = loc['price_level']
+        case price_range
+        when 0..1
+          @location.price_range = '$'
+        when 1..2
+          @location.price_range = '$$'
+        when 2..3
+          @location.price_range = '$$$'
+        when 3..4
+          @location.price_range = '$$$$'
+        end
+        @locations << @location
+      end
     @locations
+    end
   end
 
   #Use the lat and long provided by get_lat_and_long method to build the call to google API.
@@ -70,9 +81,13 @@ class Location < ApplicationRecord
     search_radius = radius
     if location != ''
       search_locations = Geocoder.search(location)
+      puts "Seach location#{search_locations}"
       lat = search_locations[0].latitude
+      puts "This is lat #{lat}"
       lon = search_locations[0].longitude
+      puts "This is lon #{lon}"
       coordinates = (lat.to_s) + ',' + (lon.to_s)
+      puts "This is coordinates #{coordinates}"
       self.call_google_places_api(coordinates, search_radius)
     else
       self.call_google_places_api(coordinates, search_radius)

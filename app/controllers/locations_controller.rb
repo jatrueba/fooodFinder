@@ -15,14 +15,19 @@ class LocationsController < ApplicationController
 
   def show
     location = params[:search_location] || session[:location]
+    testing = Geocoder.search(location)
+    if testing.empty?
+      redirect_to root_path
+    else
     coordinates = params[:lat_lon] || session[:lat_lon]
     radius = params[:radius]
-    puts "Radius in controller #{radius}"
-    if location != nil || coordinates != nil
+    # puts "Radius in controller #{radius}"
+    if location != nil && coordinates != nil
       @locations = Location.get_search_results(location, coordinates, radius)
     else
       render 'index'
     end
   end
+end
 
 end
