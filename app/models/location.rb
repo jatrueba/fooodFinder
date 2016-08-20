@@ -81,13 +81,9 @@ class Location < ApplicationRecord
     search_radius = radius
     if location != ''
       search_locations = Geocoder.search(location)
-      puts "Seach location#{search_locations}"
       lat = search_locations[0].latitude
-      puts "This is lat #{lat}"
       lon = search_locations[0].longitude
-      puts "This is lon #{lon}"
       coordinates = (lat.to_s) + ',' + (lon.to_s)
-      puts "This is coordinates #{coordinates}"
       self.call_google_places_api(coordinates, search_radius)
     else
       self.call_google_places_api(coordinates, search_radius)
